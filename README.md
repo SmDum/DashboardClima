@@ -19,7 +19,7 @@ Este projeto é um **dashboard interativo de clima** desenvolvido com **Python**
 
 > Interface moderna e responsiva com Streamlit + Plotly.
 
-![preview](https://via.placeholder.com/800x400?text=Preview+do+Dashboard)
+![preview](image.png)
 
 ## 📦 Bibliotecas Utilizadas
 
