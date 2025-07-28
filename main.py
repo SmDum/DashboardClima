@@ -84,7 +84,7 @@ if buscar:
              title=f'🌡️ Previsão de Temperatura - {cidade.title()}', #Título
              template='plotly_dark') #Tema do gráfico
 
-            fig.update_traces(marker=dict(line=dict(width=0), color="#531fb4"))  #Personalização das barras
+            fig.update_traces(marker=dict(line=dict(width=0), color="#f19408"))  #Personalização das barras
 
             fig.update_layout(
                 title_x=0.5, #Centralização do título
@@ -98,23 +98,26 @@ if buscar:
 
             # ===== UMIDADE OPCIONAL =====
             with st.expander("💧 Visualizar gráfico de umidade"): #Com o botão de expansão aberto
-                fig_h = px.line(df, x='Data/Hora', y='Umidade (%)',
+                fig_h = px.bar(df, x='Data/Hora', y='Umidade (%)',
                                 title=f'💧 Umidade Relativa - {cidade.title()}',
                                 template='plotly_dark',
-                                markers=True)
-                fig_h.update_traces(line=dict(width=2), marker=dict(size=4))
+                            )
+                
+                fig_h.update_traces(marker=dict(line=dict(width=0), color="#0b64ca")) #Personalização das barras de umidade
+                
                 fig_h.update_layout(
-                    title_x=0.5,
-                    font=dict(size=14),
-                    plot_bgcolor='#0E1117',
-                    paper_bgcolor='#0E1117',
-                    margin=dict(l=20, r=20, t=60, b=20)
+                    title_x=0.5, #Centralização do título
+                    font=dict(size=14), #Tamanho da fonte
+                    plot_bgcolor='#0E1117', #Cor de fundo do gráfico
+                    paper_bgcolor='#0E1117', #Cor de fundo do papel
+                    margin=dict(l=20, r=20, t=60, b=20) #Margens do gráfico
                 )
-                st.plotly_chart(fig_h, use_container_width=True)
+                
+                st.plotly_chart(fig_h, use_container_width=True) #Exibição do gráfico de umidade
 
         else:
-            st.error("🚫 Cidade não encontrada. Verifique o nome e tente novamente.")
+            st.error("🚫 Cidade não encontrada. Verifique o nome e tente novamente.") #Mensagem de erro
 
 # =================== FOOTER ============================
-st.markdown("---")
-st.caption("Desenvolvido por Samuel de Moraes Delgado • Dados via OpenWeatherMap • Construído com Streamlit 🚀")
+st.markdown("---") #Separador horizontal
+st.caption("Desenvolvido por Samuel de Moraes Delgado • Dados via OpenWeatherMap • Construído com Streamlit 🚀") #Informações adicionais
